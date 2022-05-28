@@ -5,10 +5,12 @@ import {
   View,
   Pressable,
   ImageBackground,
-  Image,
 } from "react-native";
 import image from "../assets/bg.jpg";
 import { LinearGradient } from "expo-linear-gradient";
+import Logo from "../components/Logo";
+import WideHomeButton from "../components/WideHomeButton";
+import HomeHeading from "../components/HomeHeading";
 
 function HomeScreen({ navigation }) {
   const signIn = () => {
@@ -16,30 +18,34 @@ function HomeScreen({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require("../assets/logo.png")}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <Text style={styles.subtitle}>Subtitle</Text>
-      </View>
-
+      <Tab.Navigator>
+        <Tab.Screen name="Feed" component={Feed} />
+        <Tab.Screen name="Messages" component={Messages} />
+      </Tab.Navigator>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <LinearGradient
-          colors={["#5781ae", "rgba(106, 135, 159, 0.5) 50%", "#5781ae"]}
+          colors={[
+            "rgba(106, 135, 159, 1) 0%",
+            "rgba(106, 135, 159, 0.7) 50%",
+            "#5781ae",
+          ]}
           style={styles.background}
         >
+          <Logo />
+
+          <HomeHeading title="Lorem ipsum dolor" />
+
           <View style={styles.wrapper}>
-            <Pressable
-              style={styles.button}
-              onPress={() => navigation.navigate("LogIn")}
-            >
-              <Text style={styles.text}>Log in</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={signIn}>
-              <Text style={styles.text}>Sign In</Text>
-            </Pressable>
+            <WideHomeButton
+              navigation={navigation}
+              title="Login"
+              path="LogIn"
+            />
+            <WideHomeButton
+              navigation={navigation}
+              title="Sign up"
+              path="Register"
+            />
           </View>
         </LinearGradient>
       </ImageBackground>
@@ -56,45 +62,14 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   wrapper: {
-    marginBottom: 20,
+    marginBottom: 30,
     paddingHorizontal: 14,
   },
-  logoContainer: {
-    marginTop: 30,
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  logo: {
-    height: "100%",
-    width: "100%",
-  },
-  subtitle: {
-    color: "#000",
-    fontSize: 18,
-    elevation: 1,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 12,
-    width: "100%",
-    height: 50,
-    backgroundColor: "#386596",
-    borderRadius: 5,
-    elevation: 3,
-  },
-  text: {
-    fontSize: 18,
-    color: "#fff",
-    textTransform: "uppercase",
-  },
+
   background: {
-    bottom: 0,
-    left: 0,
-    right: 0,
+    position: "relative",
     height: "100%",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
   },
-  image: { flex: 2 },
+  image: { flex: 1 },
 });
