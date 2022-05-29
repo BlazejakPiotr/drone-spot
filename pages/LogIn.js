@@ -1,21 +1,12 @@
 import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Pressable,
-  TextInput,
-  SafeAreaView,
-  ScrollView,
-  KeyboardAvoidingView,
-} from "react-native";
+import { Text, StyleSheet, View, TextInput, ScrollView } from "react-native";
 import WideHomeButton from "../components/WideHomeButton";
 import Logo from "../components/Logo";
 import HomeHeading from "../components/HomeHeading";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
 
-function LogIn({ navigation, fonts }) {
+function LogIn({ navigation }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -76,7 +67,7 @@ function LogIn({ navigation, fonts }) {
         >
           Forgot Password?
         </Text>
-        <WideHomeButton navigation={navigation} title="Login" path="Core" />
+        <WideHomeButton navigation={navigation} title="Login" path="App" />
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Text
             style={{
@@ -144,6 +135,7 @@ const styles = StyleSheet.create({
     color: "#555",
     fontSize: 14,
   },
+  image: { flex: 1 },
 });
 
 export default LogIn;

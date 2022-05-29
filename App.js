@@ -6,15 +6,16 @@ import {
   Montserrat_300Light,
 } from "@expo-google-fonts/montserrat";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
-import Navbar from "./components/Navbar";
-import AppScreen from "./pages/AppScreen";
-import HomeScreen from "./pages/HomeScreen";
+import "react-native-gesture-handler";
+
 import LogIn from "./pages/LogIn";
+
 import Register from "./pages/Register";
 
-const Stack = createNativeStackNavigator();
+import AppScreen from "./pages/AppScreen";
+import Homepage from "./pages/Homepage";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -26,24 +27,18 @@ export default function App() {
 
   if (!fontsLoaded) {
     console.log("not loaded");
-    // return <AppLoading />;
+    return <AppLoading />;
   }
+
+  const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* Screens for logged users */}
-
-        <Stack.Group>
-          <Stack.Screen name="App" component={AppScreen} />
-        </Stack.Group>
-
-        {/* Auth screens */}
-        <Stack.Group>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="LogIn" component={LogIn} />
-          <Stack.Screen name="Register" component={Register} />
-        </Stack.Group>
+        <Stack.Screen name="Home" component={Homepage} />
+        <Stack.Screen name="Login" component={LogIn} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="App" component={AppScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

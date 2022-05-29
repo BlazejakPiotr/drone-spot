@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
+  Dimensions,
   ImageBackground,
 } from "react-native";
 import image from "../assets/bg.jpg";
@@ -12,40 +12,24 @@ import Logo from "../components/Logo";
 import WideHomeButton from "../components/WideHomeButton";
 import HomeHeading from "../components/HomeHeading";
 
-function HomeScreen({ navigation }) {
-  const signIn = () => {
-    console.log();
-  };
+function Homepage({ navigation }) {
   return (
     <View style={styles.container}>
-      <Tab.Navigator>
-        <Tab.Screen name="Feed" component={Feed} />
-        <Tab.Screen name="Messages" component={Messages} />
-      </Tab.Navigator>
+      <Logo />
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <LinearGradient
-          colors={[
-            "rgba(106, 135, 159, 1) 0%",
-            "rgba(106, 135, 159, 0.7) 50%",
-            "#5781ae",
-          ]}
+          colors={["#5781ae", "rgba(106, 135, 159, 0.3) 25%", "transparent"]}
           style={styles.background}
         >
-          <Logo />
-
           <HomeHeading title="Lorem ipsum dolor" />
 
           <View style={styles.wrapper}>
             <WideHomeButton
-              navigation={navigation}
               title="Login"
-              path="LogIn"
-            />
-            <WideHomeButton
+              path="Login"
               navigation={navigation}
-              title="Sign up"
-              path="Register"
             />
+            <WideHomeButton title="Sign up" path="Register" />
           </View>
         </LinearGradient>
       </ImageBackground>
@@ -53,23 +37,26 @@ function HomeScreen({ navigation }) {
   );
 }
 
-export default HomeScreen;
-
+export default Homepage;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#5781ae",
     flex: 1,
     color: "#fff",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   wrapper: {
+    flex: 1,
     marginBottom: 30,
     paddingHorizontal: 14,
+    flexDirection: "column",
+    justifyContent: "flex-end",
   },
 
   background: {
+    flex: 1,
     position: "relative",
-    height: "100%",
-    justifyContent: "space-between",
   },
-  image: { flex: 1 },
+  image: { flex: 1, position: "relative" },
 });

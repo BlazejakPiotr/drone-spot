@@ -100,7 +100,7 @@ function Register({ navigation }) {
             Term and Conditions
           </Text>
         </View>
-        <WideHomeButton navigation={navigation} title="Sign up" path="Core" />
+        <WideHomeButton navigation={navigation} title="Sign up" path="App" />
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Text
             style={{
@@ -115,7 +115,7 @@ function Register({ navigation }) {
               fontFamily: "Montserrat_600SemiBold",
               marginBottom: 12,
             }}
-            onPress={() => navigation.navigate("LogIn")}
+            onPress={() => navigation.navigate("Login")}
           >
             Sign in
           </Text>
