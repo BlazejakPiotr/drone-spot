@@ -1,6 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
-import AppLoading from "expo-app-loading";
+import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Spots from "./Spots";
 import Market from "./Market";

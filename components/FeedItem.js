@@ -5,9 +5,10 @@ import {
   View,
   Dimensions,
   ImageBackground,
-  Button,
+  TouchableOpacity,
   Image,
 } from "react-native";
+import { FontAwesome5, Feather } from "@expo/vector-icons";
 
 import avatar from "../assets/avatar.jpg";
 import image from "../assets/feeditem.jpg";
@@ -39,11 +40,19 @@ function FeedItem() {
               </Text>
             </View>
           </View>
-          <Button
-            style={styles.followbtn}
+          <TouchableOpacity
             onPress={() => console.log("follow!")}
             title="Follow"
-          />
+            color="#386596"
+          >
+            <View style={styles.followbtn}>
+              <Text
+                style={{ color: "#fff", fontFamily: "Montserrat_600SemiBold" }}
+              >
+                Follow
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.title}>Most kolejowy Janikowo</Text>
@@ -57,7 +66,28 @@ function FeedItem() {
           </View>
         </View>
       </ImageBackground>
-      <View style={styles.cta}></View>
+      <View style={styles.cta}>
+        {/* LIKES */}
+        <View style={styles.ctaBtn}>
+          <FontAwesome5 name="heart" size={16} color="#888" />
+          <Text style={styles.ctaText}>301</Text>
+        </View>
+        {/* COMMENTS */}
+        <View style={styles.ctaBtn}>
+          <Feather name="message-square" size={16} color="#888" />
+          <Text style={styles.ctaText}>0</Text>
+        </View>
+        {/* BOOKMARK */}
+        <View style={styles.ctaBtn}>
+          <Feather name="bookmark" size={16} color="#888" />
+          <Text style={styles.ctaText}>Bookmark</Text>
+        </View>
+        {/* SHARE */}
+        <View style={styles.ctaBtn}>
+          <Feather name="share-2" size={16} color="#888" />
+          <Text style={styles.ctaText}>Share</Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -73,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
     justifyContent: "space-between",
-    padding: 14,
+    padding: 18,
   },
   author: {
     flexDirection: "row",
@@ -81,11 +111,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   avatar: { borderRadius: 50, width: 30, height: 30, marginRight: 12 },
+  followbtn: {
+    backgroundColor: "#386596",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 5,
+  },
 
-  title: { fontFamily: "Montserrat_700Bold", fontSize: 18, color: "#fff" },
+  title: {
+    fontFamily: "Montserrat_700Bold",
+    fontSize: 18,
+    color: "#fff",
+    marginBottom: 8,
+  },
   tag: {
     borderColor: "#fff",
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 8,
     marginRight: 4,
@@ -95,8 +136,21 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_600SemiBold",
   },
   cta: {
-    backgroundColor: "lightgray",
-    height: 45,
+    paddingHorizontal: 18,
+    flexDirection: "row",
+    backgroundColor: "#eee",
+    height: 40,
+  },
+  ctaBtn: {
+    marginRight: 18,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  ctaText: {
+    marginLeft: 8,
+    color: "#888",
+    fontFamily: "Montserrat_700Bold",
+    fontSize: 13,
   },
 });
 export default FeedItem;
