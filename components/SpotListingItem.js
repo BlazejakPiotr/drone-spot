@@ -8,16 +8,16 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { FontAwesome5, Feather } from "@expo/vector-icons";
 
 import avatar from "../assets/avatar.jpg";
 import image from "../assets/feeditem.jpg";
-function FeedItem() {
+import CTABar from "./CTABar";
+function SpotListingItem({ spot }) {
   return (
     <View style={styles.container}>
       <ImageBackground
         style={styles.background}
-        source={image}
+        source={spot.photos[0].url}
         resizeMode="cover"
       >
         <View
@@ -31,12 +31,12 @@ function FeedItem() {
             <Image source={avatar} resizeMode="contain" style={styles.avatar} />
             <View>
               <Text style={{ fontFamily: "Montserrat_700Bold", color: "#fff" }}>
-                Kajtek
+                {spot.author.nickname}
               </Text>
               <Text
                 style={{ fontFamily: "Montserrat_400Regular", color: "#fff" }}
               >
-                1206 followers
+                {spot.author.followers} followers
               </Text>
             </View>
           </View>
@@ -55,39 +55,22 @@ function FeedItem() {
           </TouchableOpacity>
         </View>
         <View>
+          {/* TITLE */}
           <Text style={styles.title}>Most kolejowy Janikowo</Text>
+
+          {/* TAGS */}
           <View style={{ flexDirection: "row" }}>
-            <View style={styles.tag}>
-              <Text style={styles.tagText}>FPV</Text>
-            </View>
-            <View style={styles.tag}>
-              <Text style={styles.tagText}>Freestyle</Text>
-            </View>
+            {spot.tags.map((tag) => {
+              return (
+                <View style={styles.tag} key={tag}>
+                  <Text style={styles.tagText}>{tag}</Text>
+                </View>
+              );
+            })}
           </View>
         </View>
       </ImageBackground>
-      <View style={styles.cta}>
-        {/* LIKES */}
-        <View style={styles.ctaBtn}>
-          <FontAwesome5 name="heart" size={16} color="#888" />
-          <Text style={styles.ctaText}>301</Text>
-        </View>
-        {/* COMMENTS */}
-        <View style={styles.ctaBtn}>
-          <Feather name="message-square" size={16} color="#888" />
-          <Text style={styles.ctaText}>0</Text>
-        </View>
-        {/* BOOKMARK */}
-        <View style={styles.ctaBtn}>
-          <Feather name="bookmark" size={16} color="#888" />
-          <Text style={styles.ctaText}>Bookmark</Text>
-        </View>
-        {/* SHARE */}
-        <View style={styles.ctaBtn}>
-          <Feather name="share-2" size={16} color="#888" />
-          <Text style={styles.ctaText}>Share</Text>
-        </View>
-      </View>
+      <CTABar likes={spot.likes} comments={spot.comments} />
     </View>
   );
 }
@@ -135,22 +118,5 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontFamily: "Montserrat_600SemiBold",
   },
-  cta: {
-    paddingHorizontal: 18,
-    flexDirection: "row",
-    backgroundColor: "#eee",
-    height: 40,
-  },
-  ctaBtn: {
-    marginRight: 18,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  ctaText: {
-    marginLeft: 8,
-    color: "#888",
-    fontFamily: "Montserrat_700Bold",
-    fontSize: 13,
-  },
 });
-export default FeedItem;
+export default SpotListingItem;

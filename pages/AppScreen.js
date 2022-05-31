@@ -1,19 +1,19 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Spots from "./Spots";
+import MapTab from "./MapTab";
 import Market from "./Market";
 import Profile from "./Profile";
 import { FontAwesome5 } from "@expo/vector-icons";
-import Dashboard from "./Dashboard";
+import Spots from "./Spots";
 function AppScreen() {
   const Tab = createBottomTabNavigator();
   return (
     <View style={styles.container}>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
-          name="Discover"
-          component={Dashboard}
+          name="Spots"
+          component={Spots}
           options={{
             tabBarIcon: () => (
               <FontAwesome5 name="home" size={28} color="#A9A9A9" />
@@ -21,8 +21,8 @@ function AppScreen() {
           }}
         />
         <Tab.Screen
-          name="Spots"
-          component={Spots}
+          name="Map"
+          component={MapTab}
           options={{
             tabBarIcon: () => (
               <FontAwesome5 name="globe-americas" size={28} color="#A9A9A9" />

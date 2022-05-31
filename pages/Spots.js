@@ -1,36 +1,25 @@
 import React from "react";
-import { Text, StyleSheet, View, Dimensions } from "react-native";
-import MapView from "react-native-maps";
+import { StyleSheet, ScrollView } from "react-native";
+import SpotListingItem from "../components/SpotListingItem";
 import HomeHeading from "../components/HomeHeading";
+import spotsArray from "../JSON/spots.json";
 
 function Spots() {
   return (
-    <View style={styles.wrapper}>
+    <ScrollView style={{ backgroundColor: "gray" }}>
       <HomeHeading subtitle="Spots" />
-      <MapView
-        style={styles.mapcontainer}
-        showsUserLocation={true}
-        showsMyLocationButton={false}
-        zoomEnabled={true}
-      ></MapView>
-    </View>
+      {spotsArray.map((spot) => {
+        return <SpotListingItem spot={spot} key={spot.id} />;
+      })}
+    </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#f3f3f3",
-    flex: 1,
-  },
-  mapcontainer: {
-    flex: 1,
-    width: Dimensions.get("window").width,
-  },
   wrapper: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 14,
   },
 });
-
 export default Spots;

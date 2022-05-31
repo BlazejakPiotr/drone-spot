@@ -1,0 +1,65 @@
+[
+  {
+    "id": 0,
+    "title": "Most kolejowy Karpia",
+    "location": {},
+    "tags": ["FPV", "Freestyle", "Urban"],
+    "likes": 243,
+    "comments": 0,
+    "author": {
+      "id": 0,
+      "nickname": "hglock",
+      "email": "hglock@gmail.com",
+      "avatar": "https://i.imgur.com/aDcQT4Q.jpeg",
+      "followers": 12098
+    },
+    "photos": [
+      {
+        "id": 0,
+        "url": "https://st3.depositphotos.com/1010437/14835/i/450/depositphotos_148359805-stock-photo-overpass-of-the-railway-line.jpg"
+      },
+      { "id": 1, "url": "http://i.imgur.com/1ZuOSpH.jpeg" },
+      { "id": 2, "url": "http://i.imgur.com/u3qFhHL.jpeg" }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Zamek w Stobnicy",
+    "location": {},
+    "tags": ["Photo", "Castles"],
+    "likes": 94,
+    "comments": 3,
+    "author": {
+      "id": 0,
+      "nickname": "hglocke",
+      "email": "hglock@gmail.com",
+      "avatar": "https://i.imgur.com/aDcQT4Q.jpeg",
+      "followers": 12098
+    },
+    "photos": [
+      { "id": 1, "url": "https://i.imgur.com/1ZuOSpH.jpeg" },
+      { "id": 0, "url": "https://i.imgur.com/2YdwF72.jpeg" },
+      { "id": 2, "url": "https://i.imgur.com/u3qFhHL.jpeg" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Cytadela",
+    "location": {},
+    "tags": ["Nature", "Photo", "Video", "Military"],
+    "likes": 7,
+    "comments": 11,
+    "author": {
+      "id": 0,
+      "nickname": "hglock",
+      "email": "hglock@gmail.com",
+      "avatar": "https://i.imgur.com/aDcQT4Q.jpeg",
+      "followers": 12098
+    },
+    "photos": [
+      { "id": 2, "url": "https://i.imgur.com/u3qFhHL.jpeg" },
+      { "id": 1, "url": "https://i.imgur.com/1ZuOSpH.jpeg" },
+      { "id": 0, "url": "https://i.imgur.com/2YdwF72.jpeg" }
+    ]
+  }
+]
